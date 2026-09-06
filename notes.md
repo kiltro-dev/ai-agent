@@ -34,6 +34,18 @@ Este comando instala las dependencias utilizadas en el proyecto.
 pip install langchain langchain-huggingface transformers duckduckgo-search python-dotenv beautifulsoup4
 ```
 
+Alternativa reproducible con `requirements.txt` (versionado en el repo):
+
+```bash
+pip install -r requirements.txt
+```
+
+Para regenerar el archivo tras instalar algo nuevo:
+
+```bash
+pip freeze > requirements.txt
+```
+
 ## 5. Crear el archivo de configuración
 
 Este comando crea el archivo `.env` con el valor de `HF_TOKEN`.
