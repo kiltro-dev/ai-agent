@@ -1,7 +1,7 @@
 from transformers import pipeline
 
-# 1. Modelo público sin token, español nativo (GPT2)
-MODEL_ID = "datificate/gpt2-small-spanish"
+# 1. Modelo público sin token, instructivo multilingüe (mejor calidad)
+MODEL_ID = "Qwen/Qwen2-0.5B-Instruct"
 
 # 2. Create local pipeline (CPU, no HF login required)
 pipe = pipeline(
