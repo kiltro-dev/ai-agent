@@ -94,3 +94,27 @@ Y para variables de entorno:
 cp .env.example .env
 # editar HF_TOKEN
 ```
+
+## 10. Crear agente básico interactivo (`agent_basic.py`)
+
+Crea `agent_basic.py` que carga `.env`, hace `login` a HF, instancia `pipeline(text2text-generation)` con `google/flan-t5-base` y entra en bucle interactivo.
+
+```bash
+# agent_basic.py ya está en el repo
+cat agent_basic.py
+```
+
+Flujo del código:
+- `load_dotenv()` + `os.getenv("HF_TOKEN")` + `login(token=hf_token)` → autentica (necesario para modelos privados)
+- `pipe = pipeline(task="text2text-generation", model="google/flan-t5-base")` → pipeline local (requiere `torch` + `sentencepiece`, `transformers==4.44.2`)
+- Bucle `while True: input("> ")` → `pipe(user_input, max_new_tokens=100)` → `print`
+
+Ejecución:
+
+```bash
+python agent_basic.py
+# > Write one short sentence explaining what AI agent does.
+# Agent: AI agents are ...
+# > quit
+```
+Para salir: `quit`, `exit` o `Ctrl+C`.
