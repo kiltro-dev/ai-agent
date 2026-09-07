@@ -1,93 +1,56 @@
 # Primeros pasos para crear agentes
 
-Esta guia prepara el entorno del proyecto para trabajar con las herramientas del curso.
+Esta guía reproduce el entorno del proyecto desde cero.
 
-## 1. Crear el entorno virtual
+## 1. Clonar el repositorio
 
-El primer comando crea un entorno virtual llamado `.venv` para el proyecto.
+```bash
+git clone git@github.com:kiltro-dev/ai-agent.git
+cd ai-agent
+```
+
+## 2. Crear el entorno virtual
 
 ```bash
 python3 -m venv .venv
 ```
 
-## 2. Activar el entorno virtual
-
-Este comando activa el entorno virtual creado anteriormente.
+## 3. Activar el entorno virtual
 
 ```bash
 source .venv/bin/activate
 ```
 
-## 3. Actualizar pip
-
-Este comando actualiza `pip`, la herramienta utilizada para instalar paquetes de Python.
+## 4. Actualizar pip
 
 ```bash
 python -m pip install --upgrade pip
 ```
 
-## 4. Instalar las herramientas
-
-Este comando instala las dependencias utilizadas en el proyecto.
-
-```bash
-pip install langchain langchain-huggingface transformers duckduckgo-search python-dotenv beautifulsoup4
-```
-
-Alternativa reproducible con `requirements.txt` (versionado en el repo):
+## 5. Instalar las dependencias
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Para regenerar el archivo tras instalar algo nuevo:
+`requirements.txt` contiene las versiones exactas de `langchain`, `langchain-huggingface`, `transformers`, `duckduckgo-search`, `python-dotenv`, `beautifulsoup4` y sus dependencias transitivas.
+
+## 6. Configurar variables de entorno
 
 ```bash
-pip freeze > requirements.txt
+cp .env.example .env
 ```
 
-## 5. Crear el archivo de configuración
+Edita `.env` y reemplaza `hf_token` por tu token real de Hugging Face:
 
-Este comando crea el archivo `.env` con el valor de `HF_TOKEN`.
-
-```bash
-echo "HF_TOKEN=hf_token" > .env
+```
+HF_TOKEN=hf_xxx
 ```
 
-## 6. Comprobar la instalación
+`.env` está ignorado por `.gitignore`. `.env.example` es la plantilla versionada.
 
-Este comando comprueba que `langchain` y `transformers` se puedan importar correctamente.
-
-```bash
-python -c "import langchain, transformers; print('setup succesful!')"
-```
-
-## 7. Crear archivo de ejemplo para variables de entorno
-
-Este archivo sirve como plantilla para que otros usuarios sepan qué variables configurar sin exponer valores reales.
+## 7. Comprobar la instalación
 
 ```bash
-echo "HF_TOKEN=hf_token" > .env.example
-```
-
-> `.env` contiene el token real y está ignorado por `.gitignore`. `.env.example` sí se versiona.
-
-## 8. Inicializar repositorio Git
-
-```bash
-git init
-git add .env.example .gitignore notes.md
-git commit -m "feat: setup inicial con agentes, env example y notas"
-```
-
-## 9. Crear repositorio en GitHub y subir el código
-
-Requiere `gh` autenticado y clave SSH configurada.
-
-```bash
-gh repo create ai-agent --public --source=. --remote=origin --push
-# o si el repo ya existe:
-# git remote add origin git@github.com:kiltro-dev/ai-agent.git
-# git branch -M main
-# git push -u origin main
+python -c "import langchain, transformers; print('setup successful!')"
 ```
