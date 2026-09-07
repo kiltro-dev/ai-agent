@@ -15,9 +15,9 @@ login(token=hf_token)
 # 3. Choose a small, free text-generation model
 MODEL_ID = "google/flan-t5-base"
 
-# 4. Create a local text2text-generation pipeline
+# 4. Create a local pipeline (transformers 5.x: text2text-generation → text-generation)
 pipe = pipeline(
-    task="text2text-generation",
+    task="text-generation",
     model=MODEL_ID,
     tokenizer=MODEL_ID
 )

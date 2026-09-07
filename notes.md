@@ -28,15 +28,15 @@ python -m pip install --upgrade pip
 
 ## 4. Instalar las herramientas
 
-Instalación manual, librería por librería, con `pip` (educativo). Incluye `torch` y `huggingface-hub` explícitos para que quede registro, aunque `huggingface-hub` ya viene como dependencia de `transformers`.
+Instalación manual, librería por librería, con `pip` (educativo). Incluye `torch`, `huggingface_hub` y `sentencepiece` explícitos para que quede registro, aunque `huggingface_hub` ya viene como dependencia de `transformers` y `sentencepiece` es requerido por `flan-t5`.
 
 ```bash
-pip install langchain langchain-huggingface transformers duckduckgo-search python-dotenv beautifulsoup4 torch huggingface_hub
+pip install langchain langchain-huggingface transformers duckduckgo-search python-dotenv beautifulsoup4 torch huggingface_hub sentencepiece
 ```
 
 Detalle:
 - `langchain`, `langchain-huggingface` → framework de agentes
-- `transformers`, `huggingface_hub`, `torch` → modelos HF (`flan-t5` necesita `torch`)
+- `transformers`, `huggingface_hub`, `torch`, `sentencepiece` → modelos HF (`flan-t5` necesita `torch` + `sentencepiece`)
 - `duckduckgo-search` → herramienta de búsqueda
 - `python-dotenv` → carga `.env`
 - `beautifulsoup4` → parsing HTML
