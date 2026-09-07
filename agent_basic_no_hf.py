@@ -1,7 +1,7 @@
 from transformers import pipeline
 
-# 1. Choose a small, free text2text-generation model (public, no token needed)
-MODEL_ID = "google/flan-t5-base"
+# 1. Modelo público sin token, multilingüe con español (mismo pipeline que flan-t5)
+MODEL_ID = "google/mt5-small"
 
 # 2. Create local pipeline (CPU, no HF login required)
 pipe = pipeline(
