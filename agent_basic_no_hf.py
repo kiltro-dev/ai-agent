@@ -1,11 +1,11 @@
 from transformers import pipeline
 
-# 1. Modelo público sin token, multilingüe con español (mismo pipeline que flan-t5)
-MODEL_ID = "google/mt5-small"
+# 1. Modelo público sin token, español nativo (GPT2)
+MODEL_ID = "datificate/gpt2-small-spanish"
 
 # 2. Create local pipeline (CPU, no HF login required)
 pipe = pipeline(
-    task="text2text-generation",
+    task="text-generation",
     model=MODEL_ID,
     tokenizer=MODEL_ID,
     device=-1,
